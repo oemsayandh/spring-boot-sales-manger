@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Flower Sales Manager</title>
+</head>
+<body>
+
+    <h1>FLOWER SALES MANAGER</h1>
+    <h3>Welcome to Flower Management System</h3>
+
+    <hr>
+
+    <h2>Dashboard</h2>
+
+    <div>
+        <h3>Stock Update</h3>
+        <p>Manage flower stock and flower details.</p>
+        <a th:href="@{/flower-details/add}">
+            <button type="button">Stock Update</button>
+        </a>
+    </div>
+
+    <hr>
+
+    <div>
+        <h3>Sales</h3>
+        <p>Create and manage flower sales.</p>
+        <a th:href="@{/sales/add}">
+            <button type="button">Sales</button>
+        </a>
+    </div>
+
+    <hr>
+
+    <div>
+        <h3>Sales Log</h3>
+        <p>View previous sales records.</p>
+        <a th:href="@{/sales-log/list}">
+            <button type="button">Sales Log</button>
+        </a>
+    </div>
+
+</body>
+</html>

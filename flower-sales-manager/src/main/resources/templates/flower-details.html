@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Flower Details</title>
+</head>
+<body>
+
+    <h2>Flower Details</h2>
+
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>Flower ID</th>
+                <th>Flower Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="flower : ${flowers}">
+                <td th:text="${flower.flowerId}"></td>
+                <td th:text="${flower.flowerName}"></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a th:href="@{/flower-details/add}">Add New Flower</a>
+    
+    <br><br>
+
+<a th:href="@{/}">
+    Back to Home
+</a>
+
+</body>
+</html>

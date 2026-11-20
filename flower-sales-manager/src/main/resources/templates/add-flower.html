@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Flower</title>
+</head>
+<body>
+
+    <h2>Add Flower Details</h2>
+
+    <form th:action="@{/flower-details/save}"
+          th:object="${flowers}"
+          method="post">
+
+        <label>Flower Name:</label>
+        <input type="text" th:field="*{flowerName}" required>
+
+        <br><br>
+
+        <button type="submit">Save Flower</button>
+    </form>
+
+    <br>
+    
+    <br><br>
+
+
+
+    <a th:href="@{/flower-details/list}">View All Flowers</a>
+    
+     <br><br>   
+    <a th:href="@{/}">
+    Back to Home
+</a>
+
+</body>
+</html>
