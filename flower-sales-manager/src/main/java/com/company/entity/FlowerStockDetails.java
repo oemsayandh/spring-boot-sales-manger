@@ -33,6 +33,9 @@ public class FlowerStockDetails {
 	@Column(name="stock")
 	private Double stock;
 	
+	@Column(name="price")
+	private Double price;
+	
 	public FlowerStockDetails() {
 		
 	}
@@ -67,6 +70,14 @@ public class FlowerStockDetails {
 
 	public void setStock(Double stock) {
 		this.stock = stock;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 	
 	
