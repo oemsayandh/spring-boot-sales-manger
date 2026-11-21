@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Customer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar, footer {
+            background-color: #222;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #ddd !important;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .page-header {
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            margin-top: 35px;
+        }
+
+        .form-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .form-card .card-body {
+            padding: 30px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .btn-dark {
+            background-color: #222;
+            border-color: #222;
+        }
+
+        .btn-dark:hover {
+            background-color: #444;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+        <a class="navbar-brand"
+           th:href="@{/customer-details/home}">
+            CUSTOMER MANAGEMENT
+        </a>
+
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" th:href="@{/customer-details/home}">Home</a>
+            <a class="nav-link" th:href="@{/customer-details/add}">Add Customer</a>
+            <a class="nav-link" th:href="@{/customer-details/list}">Customers</a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+
+        <h2>Add Customer Details</h2>
+
+        <p class="text-secondary mb-0 mt-2">
+            Enter customer name, phone number and address information.
+        </p>
+
+    </div>
+
+    <div class="form-card">
+
+        <div class="card-body">
+
+            <h4 class="mb-4">Customer Information</h4>
+
+            <hr>
+
+            <form th:action="@{/customer-details/save}"
+                  th:object="${customerDetails}"
+                  method="post">
+
+                <!-- CUSTOMER NAME -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">Customer Name</label>
+
+                    <input type="text"
+                           class="form-control"
+                           th:field="*{customerName}"
+                           placeholder="Enter customer name"
+                           required>
+
+                </div>
+
+                <!-- CUSTOMER PHONE -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">Phone Number</label>
+
+                    <input type="tel"
+                           class="form-control"
+                           th:field="*{customerPhone}"
+                           placeholder="Enter phone number"
+                           required>
+
+                </div>
+
+                <!-- CUSTOMER ADDRESS -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">Customer Address</label>
+
+                    <textarea class="form-control"
+                              th:field="*{customerAddress}"
+                              rows="3"
+                              placeholder="Enter customer address"
+                              required></textarea>
+
+                </div>
+
+                <hr class="mb-4">
+
+                <div class="d-flex gap-2 flex-wrap">
+
+                    <button type="submit" class="btn btn-dark">
+                        Save Customer
+                    </button>
+
+                    <a th:href="@{/customer-details/list}"
+                       class="btn btn-outline-dark">
+                        View Customers
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p class="mb-0">
+        CUSTOMER MANAGEMENT | Customer Management System
+    </p>
+</footer>
+
+</body>
+</html>

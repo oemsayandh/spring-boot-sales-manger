@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Customer Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar, footer {
+            background-color: #222;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #ddd !important;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .page-header {
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            margin-top: 35px;
+        }
+
+        .table-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 30px;
+            padding: 25px;
+        }
+
+        .table th {
+            background-color: #222;
+            color: white;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+        <a class="navbar-brand"
+           th:href="@{/customer-details/home}">
+            CUSTOMER MANAGEMENT
+        </a>
+
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" th:href="@{/customer-details/home}">Home</a>
+            <a class="nav-link" th:href="@{/customer-details/add}">Add Customer</a>
+            <a class="nav-link" th:href="@{/customer-details/list}">Customers</a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+
+        <h2>Customer Details</h2>
+
+        <p class="text-secondary mb-0 mt-2">
+            View and manage all registered customers.
+        </p>
+
+    </div>
+
+    <div class="table-card">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+            <h4 class="mb-0">Customer List</h4>
+
+            <a th:href="@{/customer-details/add}"
+               class="btn btn-dark">
+                + Add Customer
+            </a>
+
+        </div>
+
+        <hr>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Customer Name</th>
+                        <th>Phone Number</th>
+                        <th>Customer Address</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr th:each="customer : ${customerDetails}">
+
+                        <td th:text="${customer.customerId}"></td>
+
+                        <td th:text="${customer.customerName}"></td>
+
+                        <td th:text="${customer.customerPhone}"></td>
+
+                        <td th:text="${customer.customerAddress}"></td>
+
+                        <td>
+
+                            <div class="d-flex gap-2">
+
+                                <a th:href="@{/customer-details/edit/{id}(id=${customer.customerId})}"
+                                   class="btn btn-sm btn-outline-dark">
+                                    Edit
+                                </a>
+
+                                <a th:href="@{/customer-details/delete/{id}(id=${customer.customerId})}"
+                                   class="btn btn-sm btn-danger"
+                                   onclick="return confirm('Are you sure you want to delete this customer?');">
+                                    Delete
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    <tr th:if="${#lists.isEmpty(customerDetails)}">
+
+                        <td colspan="5" class="text-center text-secondary">
+                            No customer records found.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p class="mb-0">
+        CUSTOMER MANAGEMENT | Customer Management System
+    </p>
+</footer>
+
+</body>
+</html>

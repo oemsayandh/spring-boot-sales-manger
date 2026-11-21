@@ -17,7 +17,11 @@ import com.company.service.FlowerStockDetailsService;
 @Controller
 @RequestMapping("/flower-stock-details")
 public class FlowerStockDetailsController {
-
+	/**
+	 * @author sayandh
+	 * @date 11/20/2026
+	 * 
+	 */
     @Autowired
     private FlowerStockDetailsService flowerStockDetailsService;
 
