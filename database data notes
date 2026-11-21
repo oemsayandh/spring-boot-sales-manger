@@ -1,0 +1,67 @@
+1. Project Name
+
+Flower Sales and Stock Management System
+
+
+Project Description
+
+Purpose: Manage flowers, rates, stock, customers, sales, and payments.
+Users: Shop owner and sales staff.
+Main Features:
+Manage flower details and rates.
+Manage flower stock.
+Maintain rate history.
+Manage customers.
+Record sales and sale items.
+Record payments.
+
+Tables
+
+flowers
+flower_id – INT, PK, AUTO_INCREMENT, NOT NULL
+flower_name – VARCHAR(100), NOT NULL
+
+flower_rate_details
+ flower_rate_id – INT, PK, AUTO_INCREMENT, NOT NULL
+ flower_id – INT,  NOT NULL          (foreignkey)
+ date_flower_rate – DATE, NOT NULL
+ flower_rate – DOUBLE, NOT NULL
+
+flower_stock_details
+stock_id – INT, PK, AUTO_INCREMENT, NOT NULL
+flower_id – INT, NOT NULL             (foreignkey flower id)
+stock_date – DATE, NOT NULL
+stock – DOUBLE, NOT NULL
+price - DOUBLE
+
+rate_history_details
+rate_history_id – INT, PK, AUTO_INCREMENT, NOT NULL
+flower_id – INT, NOT NULL                (foreignkey flower id)
+changed_date – DATE, NOT NULL
+new_rate – DOUBLE, NOT NULL
+
+customers
+customer_id – INT, PK, AUTO_INCREMENT, NOT NULL
+customer_name – VARCHAR(50), NOT NULL
+customer_address – VARCHAR(50), NOT NULL
+customer_phone – VARCHAR(50), NOT NULL
+
+sales_details
+sale_id – INT, PK, AUTO_INCREMENT, NOT NULL
+customer_id – INT,NOT NULL                        (foreignkey customerid)
+bill_no – INT, NOT NULL
+sale_date – DATE, NOT NULL
+sale_total_amount – INT, NOT NULL
+
+sales_sub_items_details
+sale_item_id – INT, PK, AUTO_INCREMENT, NOT NULL
+sale_id – INT,NOT NULL                          (foreignkey sales id)
+flower_id – INT,NOT NULL                        (foreignkey flowerid)
+quantity – DOUBLE, NOT NULL
+rate – DOUBLE, NOT NULL
+
+payement_details
+payment_id – INT, PK, AUTO_INCREMENT, NOT NULL
+sale_id – INT, NOT NULL                           (foreignkey sales id)
+payment_date – DATE, NOT NULL
+payement_mode – VARCHAR(50), NOT NULL
