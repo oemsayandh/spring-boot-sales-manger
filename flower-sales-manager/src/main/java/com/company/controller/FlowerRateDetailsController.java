@@ -21,6 +21,7 @@ public class FlowerRateDetailsController {
 	@Autowired
 	private FlowerService flowersService;
 	
+	
 	@GetMapping({"/","/home"})
 	public String home() {
 		return "home";
