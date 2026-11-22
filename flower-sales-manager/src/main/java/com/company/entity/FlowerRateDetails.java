@@ -45,13 +45,7 @@ public class FlowerRateDetails {
 		this.flowerRateId = flowerRateId;
 	}
 
-	public Flowers getFlowers() {
-		return flowers;
-	}
 
-	public void setFlowers(Flowers flowers) {
-		this.flowers = flowers;
-	}
 
 	public Date getDateFlowerRate() {
 		return dateFlowerRate;
@@ -67,6 +61,14 @@ public class FlowerRateDetails {
 
 	public void setFlowerRate(Double flowerRate) {
 		this.flowerRate = flowerRate;
+	}
+
+	public Flowers getFlowers() {
+		return flowers;
+	}
+
+	public void setFlowers(Flowers flowers) {
+		this.flowers = flowers;
 	}
 
 }
