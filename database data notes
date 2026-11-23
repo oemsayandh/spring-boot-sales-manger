@@ -65,3 +65,4 @@ payment_id – INT, PK, AUTO_INCREMENT, NOT NULL
 sale_id – INT, NOT NULL                           (foreignkey sales id)
 payment_date – DATE, NOT NULL
 payement_mode – VARCHAR(50), NOT NULL
+payment_amount - Int ,not null
