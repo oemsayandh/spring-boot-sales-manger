@@ -32,6 +32,9 @@ public class PayementDetails {
 	@Column(name="payement_mode")
 	private String payementMode;
 	
+	@Column(name="payment_amount")
+	private int paymentAmount;
+	
 	public PayementDetails() {
 		
 	}
@@ -66,6 +69,14 @@ public class PayementDetails {
 
 	public void setPayementMode(String payementMode) {
 		this.payementMode = payementMode;
+	}
+
+	public int getPaymentAmount() {
+		return paymentAmount;
+	}
+
+	public void setPaymentAmount(int paymentAmount) {
+		this.paymentAmount = paymentAmount;
 	}
 	
 

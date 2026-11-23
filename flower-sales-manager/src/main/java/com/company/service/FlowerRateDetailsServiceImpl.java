@@ -21,33 +21,34 @@ public class FlowerRateDetailsServiceImpl implements FlowerRateDetailsService {
 	@Autowired
 	private FlowersRepository flowersRepository;
 	@Autowired
-	private RateHistorydDetailsRepository rateDetailsRepository;
+	private RateHistorydDetailsRepository ratehistoryDetailsRepository;
 
 	@Override
 	@Transactional
-	public FlowerRateDetails saveCustomerOrder(FlowerRateDetails flowerRateDetails) {
-		Integer FlowersId = flowerRateDetails.getFlowers().getFlowerId();
-		
-		Flowers flowers = flowersRepository.findById(FlowersId).orElse(null);
-		flowerRateDetails.setFlowers(flowers);
-		
-		
-		// for transfering rate when changes to rate history/////////
-		if (flowerRateDetails.getFlowerRateId() != null) {
+	public FlowerRateDetails saveCustomerOrder(FlowerRateDetails details) {
 
-	        FlowerRateDetails old = flowerRateDetailsRepository.findById(flowerRateDetails.getFlowerRateId()).orElse(null);
-	        if (old != null) {
+	    Flowers flowers = flowersRepository.findById(
+	            details.getFlowers().getFlowerId()).orElse(null);
+
+	    details.setFlowers(flowers);
+
+	    if (details.getFlowerRateId() != null) {
+
+	        FlowerRateDetails old = flowerRateDetailsRepository
+	                .findById(details.getFlowerRateId()).orElse(null);
+
+	        if (old != null && !old.getFlowerRate().equals(details.getFlowerRate())) {
+
 	            RateHistorydDetails history = new RateHistorydDetails();
-
 	            history.setFlowers(old.getFlowers());
-	            history.setChangedDate(old.getDateFlowerRate());
+	            history.setChangedDate(new java.sql.Date(System.currentTimeMillis()));
 	            history.setNewRate(old.getFlowerRate());
 
-	            rateDetailsRepository.save(history);
+	            ratehistoryDetailsRepository.save(history);
 	        }
 	    }
-		////////////////////////////////////////////////////////////////////////////////
-		return flowerRateDetailsRepository.save(flowerRateDetails);
+
+	    return flowerRateDetailsRepository.save(details);
 	}
 
 	@Override
@@ -66,6 +67,12 @@ public class FlowerRateDetailsServiceImpl implements FlowerRateDetailsService {
 	public void deleteCustomerOrderDateById(Integer flowerRateId) {
 		flowerRateDetailsRepository.deleteById(flowerRateId);
 		
+	}
+
+	@Override
+	public List<FlowerRateDetails> getRatesByFlowerId(Integer flowerId) {
+		
+		return flowerRateDetailsRepository.findByFlowers_FlowerIdOrderByDateFlowerRateDesc(flowerId);
 	}
 
 }

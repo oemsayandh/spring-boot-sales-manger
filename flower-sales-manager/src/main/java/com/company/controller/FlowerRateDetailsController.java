@@ -52,7 +52,7 @@ public class FlowerRateDetailsController {
 		model.addAttribute("flowers",flowersService.getAllFlowerIdName());
 		return "edit-flowerRate-details";
 	}
-	
+
 	@PostMapping("/update/{flowerRateId}")
 	public String updateOderRateById(@PathVariable Integer flowerRateId,@ModelAttribute FlowerRateDetails flowerRate) {
 			flowerRate.setFlowerRateId(flowerRateId);

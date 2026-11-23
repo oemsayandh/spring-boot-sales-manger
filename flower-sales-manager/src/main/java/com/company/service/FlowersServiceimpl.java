@@ -25,5 +25,13 @@ public class FlowersServiceimpl implements FlowerService {
 		return flowersRepository.findAll();
 	}
 
+	@Override
+	public Flowers getFlowersById(Integer flowerId) {
+		
+		return flowersRepository.findById(flowerId).orElse(null);
+	}
+
+	
+
 
 }

@@ -1,5 +1,7 @@
 package com.company.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.company.entity.FlowerRateDetails;
@@ -9,5 +11,7 @@ import com.company.entity.FlowerRateDetails;
  * 
  */
 public interface FlowerRateDetailsRepository extends JpaRepository<FlowerRateDetails, Integer> {
+	List<FlowerRateDetails> findByFlowers_FlowerIdOrderByDateFlowerRateDesc(
+			Integer flowerId );
 
 }

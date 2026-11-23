@@ -12,5 +12,7 @@ public interface FlowerService {
 
 	List<Flowers> getAllFlowerIdName();
 	
+	Flowers getFlowersById(Integer flowerId);
+	
 
 }

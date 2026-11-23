@@ -27,7 +27,8 @@ public class SalesDetails {
 	@JoinColumn(name="customer_id",nullable = false)
 	private Customers customers;
 	
-	@Column(name="bill_no")
+
+	@Column(name="bill_no",unique = true,nullable = false)
 	private int billNo;
 	
 	@Column(name="sale_date")

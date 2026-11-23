@@ -13,7 +13,7 @@ public interface FlowerRateDetailsService {
 	
 	void deleteCustomerOrderDateById(Integer flowerRateId);
 	
-	
+	List<FlowerRateDetails> getRatesByFlowerId(Integer flowerId);
 	
 	
 	
