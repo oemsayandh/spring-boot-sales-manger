@@ -23,7 +23,7 @@ public class PayementDetails {
 	private Integer paymentId;
 	
 	@ManyToOne
-	@JoinColumn(name="sale_id",nullable = false)
+	@JoinColumn(name="sale_id",nullable = false,unique = true)
 	private SalesDetails salesDetails;
 	
 	@Column(name="payment_date")

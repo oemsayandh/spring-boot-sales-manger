@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.entity.FlowerRateDetails;
 import com.company.service.FlowerRateDetailsService;
 import com.company.service.FlowerService;
-
+/**
+ * @author sayandh
+ * @date 11/22/2026
+ * 
+ */
 @Controller
 @RequestMapping("/flower-rate")
 public class FlowerRateDetailsController {

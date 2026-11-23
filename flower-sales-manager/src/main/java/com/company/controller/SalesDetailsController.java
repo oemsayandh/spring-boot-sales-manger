@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.entity.Customers;
+import com.company.entity.SalesDetails;
 import com.company.entity.SalesSubItemsDetails;
 import com.company.service.CustomerService;
 import com.company.service.FlowerRateDetailsService;
@@ -20,12 +21,22 @@ import com.company.service.FlowerService;
 import com.company.service.SalesDetailsService;
 
 import jakarta.servlet.http.HttpSession;
-
+/**
+ * @author sayandh
+ * @date 11/23/2026
+ * 
+ */
 @Controller
 @RequestMapping("/sales-Details")
 public class SalesDetailsController {
-	@Autowired
-	private SalesDetailsService salesDetailsService;
+	//constructor injection
+	private final SalesDetailsService salesDetailsService;
+	
+	public SalesDetailsController(SalesDetailsService salesDetailsService) {
+		this.salesDetailsService = salesDetailsService;
+	}
+
+
 	@Autowired 
 	private FlowerService flowerService;
 	@Autowired
@@ -105,12 +116,13 @@ public class SalesDetailsController {
 
         Customers customer = customerService.modifyCustomerByID(customerId);
 
-        salesDetailsService.saveDetails(customer, saleDate, items);
+        SalesDetails savedSales =
+                salesDetailsService.saveDetails(customer, saleDate, items);
 
         session.removeAttribute("items");
         session.removeAttribute("flowerId");
 
-        return "redirect:/sales-Details/add";
+        return "redirect:/payments/"+ savedSales.getSaleId();
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.company.entity.RateHistorydDetails;
 import com.company.repository.RateHistorydDetailsRepository;
-
+/**
+ * @author sayandh
+ * @date 11/22/2026
+ * 
+ */
 @Service
 public class RateHistorydDetailsServiceImpl implements RateHistorydDetailsService{
 	@Autowired

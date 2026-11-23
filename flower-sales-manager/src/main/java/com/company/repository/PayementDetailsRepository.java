@@ -9,5 +9,6 @@ import com.company.entity.PayementDetails;
  * 
  */
 public interface PayementDetailsRepository extends JpaRepository<PayementDetails, Integer>{
+	boolean existsBySalesDetails_SaleId(Integer saleId);
 
 }

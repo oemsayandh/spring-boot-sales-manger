@@ -13,7 +13,11 @@ import com.company.repository.SalesDetailsRepository;
 import com.company.repository.SalesSubItemsDetailsRepository;
 
 import jakarta.transaction.Transactional;
-
+/**
+ * @author sayandh
+ * @date 11/23/2026
+ * 
+ */
 @Service
 public class SalesDetailsServiceImpl implements SalesDetailsService{
 	@Autowired 

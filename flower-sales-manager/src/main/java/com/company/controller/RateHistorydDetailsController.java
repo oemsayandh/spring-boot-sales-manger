@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.service.RateHistorydDetailsService;
-
+/**
+ * @author sayandh
+ * @date 11/21/2026
+ * 
+ */
 @Controller
 @RequestMapping("/rate-history")
 public class RateHistorydDetailsController {
