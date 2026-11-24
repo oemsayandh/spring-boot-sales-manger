@@ -97,13 +97,19 @@
     <div class="table-card">
 
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
-
-            <h4 class="mb-0">Customer List</h4>
-
-            <a th:href="@{/customer-details/add}"
+        <a th:href="@{/customer-details/add}"
                class="btn btn-dark">
                 + Add Customer
             </a>
+			
+            <h4 class="mb-0">Customer List</h4>
+            
+            <a th:href="@{/sales-Details/add}"
+               class="btn btn-sm btn-danger">
+                Make a Sale
+            </a>
+
+            
 
         </div>
 
