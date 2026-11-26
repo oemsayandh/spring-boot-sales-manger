@@ -51,12 +51,12 @@
 
                 <li class="nav-item">
                     <a class="nav-link"
-                       th:href="@{/customer-details/add}">Sales</a>
+                       th:href="@{/customer-details/list}">Sales</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link"
-                       th:href="@{/sales-log/list}">Sales Log</a>
+                       th:href="@{/sales-log/show}">Sales Log</a>
                 </li>
 
             </ul>
@@ -211,7 +211,7 @@
                         View previous sales and transactions.
                     </p>
 
-                    <a th:href="@{/sales-log/list}"
+                    <a th:href="@{/sales-log/show}"
                        class="btn btn-dark">
                         View Sales Log
                     </a>

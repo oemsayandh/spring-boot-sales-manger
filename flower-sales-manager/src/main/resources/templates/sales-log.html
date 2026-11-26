@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Sales Log</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar, footer {
+            background-color: #222;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #ddd !important;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .log-container {
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .log-card {
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .log-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .table th {
+            background-color: #222;
+            color: white;
+            white-space: nowrap;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+        <a class="navbar-brand" th:href="@{/customer-details/home}">
+            FLOWER SHOP MANAGEMENT
+        </a>
+
+        <div class="navbar-nav ms-auto">
+
+            <a class="nav-link" th:href="@{/customer-details/home}">
+                Home
+            </a>
+
+            <a class="nav-link" th:href="@{/sales-Details/add}">
+                New Sale
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- SALES LOG -->
+
+<div class="container log-container">
+
+    <div class="log-card">
+
+        <div class="log-title">
+            <h2>Sales Log</h2>
+            <p class="text-secondary">Complete Sales History</p>
+            <hr>
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover text-center align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Log ID</th>
+                        <th>Bill No</th>
+                        <th>Customer</th>
+                        <th>Sale Date</th>
+                        <th>Total Amount</th>
+                        <th>Payment Mode</th>
+                        <th>Payment Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr th:each="log : ${salesLogs}">
+
+                        <td th:text="${log.salesLogId}"></td>
+
+                        <td th:text="${log.salesDetails.billNo}"></td>
+
+                        <td th:text="${log.salesDetails.customers.customerName}"></td>
+
+                        <td th:text="${log.salesDetails.saleDate}"></td>
+
+                        <td>
+                            ₹ <span th:text="${log.salesDetails.saleTotalAmount}"></span>
+                        </td>
+
+                        <td th:text="${log.paymentDetails.payementMode}"></td>
+
+                        <td th:text="${log.paymentDetails.paymentDate}"></td>
+
+                    </tr>
+
+                    <tr th:if="${#lists.isEmpty(salesLogs)}">
+                        <td colspan="7" class="text-secondary">
+                            No sales records found.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <a th:href="@{/sales-Details/add}"
+           class="btn btn-dark mt-3">
+            New Sale
+        </a>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+    <p class="mb-0">
+        FLOWER SHOP MANAGEMENT | Sales Management System
+    </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

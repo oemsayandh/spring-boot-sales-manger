@@ -9,5 +9,7 @@ public interface PaymentService {
 	PayementDetails savePayments(PayementDetails payementDetails);
 	
 	boolean isSaleAlredyPaid(Integer saleId);
+	
+	void completePayment(PayementDetails payment, Integer saleId);
 
 }

@@ -17,5 +17,7 @@ public interface FlowerStockDetailsService {
 	
 	void deleteStockById(int stockId);
 	
+	void reduceStock(Integer flowerId, Double quantity);
+	
 
 }

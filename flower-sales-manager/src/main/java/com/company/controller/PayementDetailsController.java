@@ -20,7 +20,6 @@ import com.company.service.PaymentService;
 public class PayementDetailsController {
 	@Autowired
 	private PaymentService paymentService;
-
 	
 	@GetMapping({"/","/home"})
 	public String home() {
@@ -37,16 +36,17 @@ public class PayementDetailsController {
 	}
 	
 	@PostMapping("/save")
-	public String savePayment(@ModelAttribute PayementDetails payementDetails,@RequestParam Integer saleId) {
-		SalesDetails salesDetails = paymentService.getSalesDetails(saleId);
-		//this for excption making for duplication of sale ids and paymnets because of html
-		 if (paymentService.isSaleAlredyPaid(saleId)) {
-		        return "redirect:/payments/already-paid";
-		    }
-		payementDetails.setSalesDetails(salesDetails);
-		payementDetails.setPaymentAmount(salesDetails.getSaleTotalAmount());
-		paymentService.savePayments(payementDetails);
-		return "redirect:/sales-Details/add";
+	public String savePayment(@ModelAttribute PayementDetails payment,
+	                          @RequestParam Integer saleId, Model model) {
+	    try {
+	        paymentService.completePayment(payment, saleId);
+	        return "redirect:/sales-log/show";
+	    } catch (RuntimeException e) {
+	        model.addAttribute("error", e.getMessage());
+	        model.addAttribute("salesDetails", paymentService.getSalesDetails(saleId));
+	        model.addAttribute("paymentDetails", payment);
+	        return "payments";
+	    }
 	}
 	
 	@GetMapping("/already-paid")

@@ -278,7 +278,7 @@
 
 
             <!-- BUTTONS -->
-
+			<p th:if="${error}" th:text="${error}"class="text-danger fw-bold text-center"></p>
             <button type="submit"
                     class="btn btn-dark payment-btn">
                 Complete Payment

@@ -1,5 +1,7 @@
 package com.company.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.company.entity.SalesSubItemsDetails;
@@ -9,5 +11,6 @@ import com.company.entity.SalesSubItemsDetails;
  * 
  */
 public interface SalesSubItemsDetailsRepository extends JpaRepository<SalesSubItemsDetails, Integer> {
+	List<SalesSubItemsDetails> findBySalesDetails_SaleId(Integer saleId);
 
 }
